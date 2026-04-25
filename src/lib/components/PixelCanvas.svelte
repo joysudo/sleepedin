@@ -1,27 +1,24 @@
 <script lang="ts">
     import { writable } from "svelte/store";
     // fetch if passed in, grab 20x20 zero grid if not
-    const { existingPixelArt = Array.from({ length: 20 }, () => Array(20).fill(0)) } = $props();
-    const colors: string[] = [
-        "transparent",
-        "pink",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "purple",
-        "black"
-    ];
+    let {
+        existingPixelArt = Array.from({ length: 20 }, () => Array(20).fill(0)),
+        colors = ["transparent", "pink", "orange", "yellow", "green", "blue", "purple", "black"],
+        onFinished
+    } = $props<{
+        existingPixelArt?: number[][],
+        colors?: string[],
+        onFinished?: (grid: number[][]) => void 
+    }>();
     // svelte-ignore state_referenced_locally
     let pixelArt = $state(structuredClone(existingPixelArt));
-    $effect(() => {
-        pixelArt = structuredClone(existingPixelArt);
-    })
+
     let currentColorIndex = $state(1);
     let isDrawing = $state(false);
 
     function paint(rowIndex: number, colIndex: number) {
-        pixelArt[rowIndex][colIndex] = currentColorIndex;
+        if (pixelArt[rowIndex][colIndex] !== currentColorIndex)
+            pixelArt[rowIndex][colIndex] = currentColorIndex;
     }
 </script>
 <svelte:window onmouseup={() => (isDrawing = false)} />
@@ -50,6 +47,11 @@
             ></button>
         {/each}
     {/each}
+</div>
+
+<div>
+    <button onclick={() => pixelArt = Array(20).fill(0).map(() => Array(20).fill(0)) }>clear</button>
+    <button onclick={() => { onFinished?.(pixelArt) }}>save</button>
 </div>
 
 <style>

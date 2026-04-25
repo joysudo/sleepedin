@@ -4,4 +4,6 @@
 
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<PixelCanvas></PixelCanvas>
+
+<!-- replace onFinished with actual project syncing to supabase -->
+<PixelCanvas onFinished={(grid) => console.log("grid data:", $state.snapshot(grid))}/>

@@ -78,5 +78,7 @@
     }
     .pixel {
         aspect-ratio: 1;
-    }
+        border: 1px solid black;
+        /* oh pls restyle */
+    } 
 </style>

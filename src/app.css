@@ -36,3 +36,6 @@ html {
     src: url('/fonts/MADE\ Tommy\ Soft\ ExtraBold\ PERSONAL\ USE.otf');
 }
 
+.dark-purple-box-shadow {
+    box-shadow: 0px 4px 0px #576EAC, 0px 6px 4px #7472A0;
+}

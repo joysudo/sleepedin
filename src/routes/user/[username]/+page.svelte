@@ -55,60 +55,67 @@
     });
 </script>
 
-<Navbar />
-<div class="flex flex-row">
-    <div class="md:w-1/2 p-8">
-        <h1
-            class="font-tommy-bold text-5xl text-purple-dark wrap-break-word italic"
-        >
-            {$page.params.username}'s dreamland
-        </h1>
-        <div class="cloud-container">
-            <img
-                src="/images/cloud_platform_grid-1.png.png"
-                class="base-image"
-                alt=""
-            />
-            <div class="grid-overlay">
-                <div class="cell">
-                    <img src="https://placehold.co/24x24/png" alt="" />
-                </div>
-                <!-- give cell class to everything in here -->
-            </div>
-        </div>
-        {#each $pixelCreatures as creature}
-            <CreatureMessage
-                pixelArt={creature.pixel_art}
-                message={creature.message}
-                author={creature.author_id}
-            />
-        {/each}
-    </div>
-    <div class="right-col md:w-1/2 p-8">
-        <div class="p-4 flex flex-col gap-2 bg-linear-to-b from-">
-            <h1 class="font-tommy-bold text-4xl text-purple-dark">about</h1>
-            <p class="font-tommy text-3xl text-purple-dark">
-                yap yap yap yap.. yap yap yap... joysudo cattatime hurray! i
-                llike bunnies and rabbits and sleeping in zzzzz i like svelte
-                and i dont like tailwind css it makes the html look ugly
-            </p>
-        </div>
-        <div class="flex flex-col p-4 gap-2">
-            <h1 class="font-tommy-bold text-4xl text-purple-dark">
-                send a bunny!
+<div class="bg-[url('/bg_blue_sky.png')] bg-cover">
+    <Navbar />
+    <div class="flex flex-row">
+        <div class="md:w-1/2 p-8">
+            <h1
+                class="font-tommy-bold text-5xl text-purple-dark wrap-break-word italic"
+            >
+                {$page.params.username}'s dreamland
             </h1>
-            <div class="gap-24 items-start flex flex-row">
-                <div class="w-[45%] place-self-center">
-                    <PixelCanvas onFinished={handleSave} />
+            <div class="cloud-container">
+                <img
+                    src="/images/cloud_platform_grid-1.png.png"
+                    class="base-image"
+                    alt=""
+                />
+                <div class="grid-overlay">
+                    <div class="cell">
+                        <img src="https://placehold.co/24x24/png" alt="" />
+                    </div>
+                    <!-- give cell class to everything in here -->
                 </div>
-                <!-- text button and OK -->
-                <div>
-                    <div class="text-bubble">
-                        <textarea
-                            bind:value={message}
-                            placeholder="Leave a message..."
-                            class="font-tommy"
-                        ></textarea>
+            </div>
+            {#each $pixelCreatures as creature}
+                <CreatureMessage
+                    pixelArt={creature.pixel_art}
+                    message={creature.message}
+                    author={creature.author_id}
+                />
+            {/each}
+        </div>
+        <div class="right-col md:w-1/2 p-8">
+            <div
+                class="p-4 mb-6 mx-6 flex flex-col gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+            >
+                <h1 class="font-tommy-bold text-4xl text-purple-dark">about</h1>
+                <p class="font-tommy text-3xl text-purple-dark">
+                    yap yap yap yap.. yap yap yap... joysudo cattatime hurray! i
+                    llike bunnies and rabbits and sleeping in zzzzz i like
+                    svelte and i dont like tailwind css it makes the html look
+                    ugly
+                </p>
+            </div>
+            <div
+                class="flex flex-col mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+            >
+                <h1 class="font-tommy-bold text-4xl text-purple-dark">
+                    send a bunny!
+                </h1>
+                <div class="gap-24 items-start flex flex-row">
+                    <div class="w-[45%] place-self-center">
+                        <PixelCanvas onFinished={handleSave} />
+                    </div>
+                    <!-- text -->
+                    <div>
+                        <div class="text-bubble">
+                            <textarea
+                                bind:value={message}
+                                placeholder="Leave a message..."
+                                class="font-tommy"
+                            ></textarea>
+                        </div>
                     </div>
                 </div>
             </div>

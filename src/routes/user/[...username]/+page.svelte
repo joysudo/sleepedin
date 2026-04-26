@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { currentUserData } from "$lib/stores/userdata";
     import { get } from "svelte/store";
     import Navbar from "$lib/components/Navbar.svelte";
     import PixelCanvas from "$lib/components/PixelCanvas.svelte";
@@ -146,7 +147,7 @@
             <h1
                 class="font-tommy-bold text-5xl text-purple-dark break-words italic"
             >
-                {$page.params.username}'s dreamland
+                {$currentUserData.username}'s dreamland
             </h1>
             <div class="cloud-container">
                 <img

@@ -1,14 +1,6 @@
 <script>
     import NavbarIcon from "./NavbarIcon.svelte";
-    
-    // async function callUsername {
-    //             const { data: data2, error: error2 } = await supabase 
-    //         .from('users')
-    //         .select('username')
-    //         .eq('id', data1.user.id)
-    //         .maybeSingle();
-    //     const username = data2?.username;
-    // }
+    import { currentUserData } from "$lib/stores/userdata";
 </script>
 
 <div
@@ -29,7 +21,7 @@
             iconUrl="/icons/home.png"
             iconAlt="home page icon"
             text="home"
-            link="/user/[username]" //add user's actual username
+            link={`/user/${$currentUserData.username}`}
         />
 
         <NavbarIcon

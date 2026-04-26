@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { get } from 'svelte/store';
+    import { get } from "svelte/store";
     import Navbar from "$lib/components/Navbar.svelte";
     import PixelCanvas from "$lib/components/PixelCanvas.svelte";
     import CreatureMessage from "$lib/components/CreatureMessage.svelte";
@@ -38,17 +38,17 @@
             ...c,
             gridX: positions[index].x,
             gridY: positions[index].y,
-            offsetX: (Math.random() - 0.5) * 20 
+            offsetX: (Math.random() - 0.5) * 20,
         }));
 
         pixelCreatures.set(positionedCreatures);
     }
-    
+
     async function handleSave(grid: number[][]) {
         const user = $currentUser;
         if (!user) return;
 
-        // Note: We don't calculate coordinates here because Supabase 
+        // Note: We don't calculate coordinates here because Supabase
         // doesn't store them. We just send the data.
         await supabase.from("pixel_creatures").insert({
             author_id: user.id,
@@ -56,10 +56,10 @@
             pixel_art: grid,
             message,
         });
-        
+
         message = "";
     }
-    
+
     $effect(() => {
         const userId = data.user?.id;
         if (!userId) return;
@@ -81,8 +81,10 @@
                     const current = get(pixelCreatures);
                     // $pixelCreatures, not get
                     // 1. Determine which spots are currently taken
-                    const occupied = new Set(current.map(c => `${c.gridX},${c.gridY}`));
-                    
+                    const occupied = new Set(
+                        current.map((c) => `${c.gridX},${c.gridY}`),
+                    );
+
                     // 2. Find all possible spots
                     const allPositions = [];
                     for (let y = 1; y <= 4; y++) {
@@ -91,13 +93,20 @@
                         }
                     }
 
-                    const emptyPositions = allPositions.filter(p => !occupied.has(`${p.x},${p.y}`));
+                    const emptyPositions = allPositions.filter(
+                        (p) => !occupied.has(`${p.x},${p.y}`),
+                    );
 
                     let finalX, finalY;
 
                     if (emptyPositions.length > 0) {
                         // Pick an empty spot
-                        const spot = emptyPositions[Math.floor(Math.random() * emptyPositions.length)];
+                        const spot =
+                            emptyPositions[
+                                Math.floor(
+                                    Math.random() * emptyPositions.length,
+                                )
+                            ];
                         finalX = spot.x;
                         finalY = spot.y;
                     } else {
@@ -110,15 +119,17 @@
                         ...newCreature,
                         gridX: finalX, // Use the local variable calculated above
                         gridY: finalY, // Use the local variable calculated above
-                        offsetX: (Math.random() - 0.5) * 20
+                        offsetX: (Math.random() - 0.5) * 20,
                     };
 
                     pixelCreatures.update((arr) => {
                         // Remove the old creature at that spot (if any) and add the new one
-                        const filtered = arr.filter(c => !(c.gridX === finalX && c.gridY === finalY));
+                        const filtered = arr.filter(
+                            (c) => !(c.gridX === finalX && c.gridY === finalY),
+                        );
                         return [...filtered, positionedNewCreature];
                     });
-                }
+                },
             )
             .subscribe();
 
@@ -128,74 +139,86 @@
     });
 </script>
 
-<Navbar />
-<div class="flex flex-row">
-    <div class="md:w-1/2 p-8">
-        <h1 class="font-tommy-bold text-5xl text-purple-dark break-words italic">
-            {$page.params.username}'s dreamland
-        </h1>
-        <div class="cloud-container">
-            <img src="/images/cloud_platform_grid-1.png.png" class="base-image" alt="">
-            <div class="grid-overlay">
-                {#each Array(24) as _, i}
-                    <div class="cell">
-                        </div>
-                {/each}
-
-                {#each $pixelCreatures.sort((a, b) => (a.gridY ?? 0) - (b.gridY ?? 0)) as creature}
-                    <div 
-                        class="cell creature-cell" 
-                        style:grid-column={creature.gridX} 
-                        style:grid-row={creature.gridY}
-                        style:z-index={creature.gridY} 
-                        style="position: relative;"
-                    >
-                        <div 
-                            // style:transform="translateX({creature.offsetX}px)" 
-                            class="w-full flex items-end"
-                            style="position: absolute; bottom: 0;"
+<div class="bg-[url('/bg_blue_sky.png')] bg-cover">
+    <Navbar />
+    <div class="flex flex-row">
+        <div class="md:w-1/2 p-8">
+            <h1
+                class="font-tommy-bold text-5xl text-purple-dark break-words italic"
+            >
+                {$page.params.username}'s dreamland
+            </h1>
+            <div class="cloud-container">
+                <img
+                    src="/images/cloud_platform.png"
+                    class="base-image"
+                    alt=""
+                />
+                <div class="grid-overlay">
+                    {#each Array(24) as _, i}
+                        <div class="cell"></div>
+                    {/each}
+                    {#each $pixelCreatures.sort((a, b) => (a.gridY ?? 0) - (b.gridY ?? 0)) as creature}
+                        <div
+                            class="cell creature-cell"
+                            style:grid-column={creature.gridX}
+                            style:grid-row={creature.gridY}
+                            style:z-index={creature.gridY}
+                            style="position: relative;"
                         >
-                            <CreatureMessage
-                                pixelArt={creature.pixel_art}
-                                message={creature.message}
-                                author={creature.author_id}
-                            />
+                            <div
+                                // style:transform="translateX({creature.offsetX}px)"
+                                class="w-full flex items-end"
+                                style="position: absolute; bottom: 0;"
+                            >
+                                <CreatureMessage
+                                    pixelArt={creature.pixel_art}
+                                    message={creature.message}
+                                    author={creature.author_id}
+                                />
+                            </div>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+            </div>
+            <div class="right-col md:w-1/2 p-8">
+                <div
+                    class="p-4 mb-6 mx-6 flex flex-col gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                >
+                    <h1 class="font-tommy-bold text-4xl text-purple-dark">
+                        about
+                    </h1>
+                    <p class="font-tommy text-3xl text-purple-dark">
+                        this is the default about/bio paragraph. this user
+                        hasn't edited it yet! hmm they must be really nonchalant
+                        or maybe they just forgot to write it. i guess we'll
+                        never know until they edit this...
+                    </p>
+                </div>
+                <div
+                    class="flex flex-col mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                >
+                    <h1 class="font-tommy-bold text-4xl text-purple-dark">
+                        send a bunny!
+                    </h1>
+                    <div class="gap-24 items-start flex flex-row">
+                        <div class="w-[45%] place-self-center">
+                            <PixelCanvas onFinished={handleSave} />
+                        </div>
+                        <!-- text -->
+                        <div class="text-bubble">
+                            <textarea
+                                bind:value={message}
+                                placeholder="Leave a message..."
+                                class="font-tommy"
+                            ></textarea>
                         </div>
                     </div>
-                {/each}
-                <!-- <div class="cell"><img src="https://placehold.co/24x24/png" alt=""></div> -->
-            </div>
-            <!-- give cell class to everything in here -->
-        </div>
-    </div>
-    <div class="right-col md:w-1/2 p-8">
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="font-tommy-bold text-4xl text-purple-dark">about</h1>
-            <p class="font-tommy text-3xl text-purple-dark">
-                yap yap yap yap.. yap yap yap... joysudo cattatime hurray! i
-                llike bunnies and rabbits and sleeping in zzzzz i like svelte
-                and i dont like tailwind css it makes the html look ugly
-            </p>
-        </div>
-        <div class="flex flex-col p-4 gap-2">
-            <h1 class="font-tommy-bold text-4xl text-purple-dark">
-                send a bunny!
-            </h1>
-            <div class="gap-6 items-start flex flex-row">
-                <div class="w-[45%] place-self-center">
-                    <PixelCanvas onFinished={handleSave} />
-                </div>
-                <div class="text-bubble">
-                    <textarea
-                        bind:value={message}
-                        placeholder="Leave a message..."
-                        class="font-tommy"
-                    ></textarea>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <style>
     .text-bubble {
@@ -257,10 +280,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    
+
         width: 80%;
         height: calc(100% * 4 / 7) !important;
-    
+
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(4, 1fr);
@@ -270,13 +293,11 @@
     .cell {
         position: relative;
         display: flex;
-        align-items: flex-end; 
+        align-items: flex-end;
         justify-content: center;
-        overflow: visible; 
+        overflow: visible;
         width: 100%;
         height: 100%;
-
-        border: 1px solid orange;
     }
 
     .cell img {

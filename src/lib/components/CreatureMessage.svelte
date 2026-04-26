@@ -84,5 +84,6 @@
         image-rendering: pixelated;
         image-rendering: -moz-crisp-edges;
         image-rendering: crisp-edges;
+        box-shadow: none !important;
     }
 </style>

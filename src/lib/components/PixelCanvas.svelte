@@ -1,9 +1,10 @@
 <script lang="ts">
     import { writable } from "svelte/store";
+    import { DEFAULT_COLORS } from '$lib/utils/constants';
     // fetch if passed in, grab 20x20 zero grid if not
     let {
         existingPixelArt = Array.from({ length: 20 }, () => Array(20).fill(0)),
-        colors = ["transparent", "pink", "orange", "yellow", "green", "blue", "purple", "black"],
+        colors = DEFAULT_COLORS,
         onFinished
     } = $props<{
         existingPixelArt?: number[][],

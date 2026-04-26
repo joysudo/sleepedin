@@ -58,17 +58,25 @@
 <Navbar />
 <div class="flex flex-row">
     <div class="md:w-1/2 p-8">
-        <h1 class="font-tommy-bold text-5xl text-purple-dark break-words italic">
+        <h1
+            class="font-tommy-bold text-5xl text-purple-dark wrap-break-word italic"
+        >
             {$page.params.username}'s dreamland
         </h1>
         <div class="cloud-container">
-            <img src="/images/cloud_platform_grid-1.png.png" class="base-image" alt="">
+            <img
+                src="/images/cloud_platform_grid-1.png.png"
+                class="base-image"
+                alt=""
+            />
             <div class="grid-overlay">
-                <div class="cell"><img src="https://placehold.co/24x24/png" alt=""></div>
+                <div class="cell">
+                    <img src="https://placehold.co/24x24/png" alt="" />
+                </div>
                 <!-- give cell class to everything in here -->
             </div>
         </div>
-            {#each $pixelCreatures as creature}
+        {#each $pixelCreatures as creature}
             <CreatureMessage
                 pixelArt={creature.pixel_art}
                 message={creature.message}
@@ -77,7 +85,7 @@
         {/each}
     </div>
     <div class="right-col md:w-1/2 p-8">
-        <div class="p-4 flex flex-col gap-2">
+        <div class="p-4 flex flex-col gap-2 bg-linear-to-b from-">
             <h1 class="font-tommy-bold text-4xl text-purple-dark">about</h1>
             <p class="font-tommy text-3xl text-purple-dark">
                 yap yap yap yap.. yap yap yap... joysudo cattatime hurray! i
@@ -89,16 +97,19 @@
             <h1 class="font-tommy-bold text-4xl text-purple-dark">
                 send a bunny!
             </h1>
-            <div class="gap-6 items-start flex flex-row">
+            <div class="gap-24 items-start flex flex-row">
                 <div class="w-[45%] place-self-center">
                     <PixelCanvas onFinished={handleSave} />
                 </div>
-                <div class="text-bubble">
-                    <textarea
-                        bind:value={message}
-                        placeholder="Leave a message..."
-                        class="font-tommy"
-                    ></textarea>
+                <!-- text button and OK -->
+                <div>
+                    <div class="text-bubble">
+                        <textarea
+                            bind:value={message}
+                            placeholder="Leave a message..."
+                            class="font-tommy"
+                        ></textarea>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,7 +145,7 @@
     }
 
     .text-bubble textarea {
-        width: 80%;
+        width: 70%;
         height: 70%;
         resize: none;
         outline: none;
@@ -165,10 +176,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    
+
         width: 80%;
         height: calc(100% * 4 / 7);
-    
+
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(4, 1fr);
@@ -177,9 +188,9 @@
     .cell {
         position: relative;
         display: flex;
-        align-items: flex-end; 
+        align-items: flex-end;
         justify-content: center;
-        overflow: visible; 
+        overflow: visible;
     }
 
     .cell img {

@@ -7,6 +7,6 @@ export async function load({ params }) {
         .from('users')
         .select('*')
         .eq('username', params.username)
-        .single();
+        .maybeSingle();
   return { user };
 }

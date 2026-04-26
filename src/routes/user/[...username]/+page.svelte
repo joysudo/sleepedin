@@ -1,4 +1,16 @@
 <script lang="ts">
+    const furnitureImageModules = import.meta.glob(
+        "/src/lib/assets/furniture/*.png",
+        {
+            eager: true,
+            import: "default",
+        },
+    );
+
+    let pfpEdit = $state(false);
+
+
+    const pfpImages = Object.values(furnitureImageModules);
     import { currentUserData } from "$lib/stores/userdata";
     import { get } from "svelte/store";
     import Navbar from "$lib/components/Navbar.svelte";
@@ -81,6 +93,20 @@
         }
     }
 
+    async function updatePFP(path: string) {
+        const user = $currentUser;
+        if (!user) return;
+
+        const { error } = await supabase
+            .from("users")
+            .update({ avatar_url: path })
+            .eq("id", user.id);
+
+        if (!error) {
+            // Update local state so the UI reflects the change immediately
+            data.user.avatar_url = path; 
+        }
+    }
     $effect(() => {
         const userId = data.user?.id;
         if (!userId) return;
@@ -164,11 +190,19 @@
     <Navbar />
     <div class="flex flex-row">
         <div class="md:w-1/2 p-8">
-            <h1
-                class="font-tommy-bold text-5xl text-purple-dark break-words italic"
-            >
-                {$page.params.username}'s dreamland
-            </h1>
+            <div class="flex items-center gap-4">
+                {#if data.user?.avatar_url}
+                    <img 
+                        src={data.user.avatar_url} 
+                        alt="pfp" 
+                        class="w-[80px] h-[80px] object-contain"
+                    />
+                {/if}
+
+                <h1 class="font-tommy-bold text-5xl text-purple-dark italic wrap-break-word w-full">
+                    {$page.params.username}'s dreamland
+                </h1>
+            </div>
             <div class="cloud-container">
                 <img
                     src="/images/cloud_platform.png"
@@ -202,6 +236,32 @@
                     {/each}
                 </div>
             </div>
+            <!-- furniture -->
+            <!-- click to open thing -->
+             {#if $currentUser && $currentUser.id === data.user.id}
+                <button
+                    class="flex justify-items-center text-enter p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl text-wrap font-tommy-bold text-3xl text-purple-dark w-fit hover:scale-105 active:scale-95 duration-200"
+                    onclick={() => (pfpEdit = !pfpEdit)}
+                >
+                    {pfpEdit == true ? "ok!" : "first time? change pfp!"}
+                </button>
+                <!-- actual thing -->
+                <div
+                    class={pfpEdit == false
+                        ? "hidden"
+                        : "flex flex-row gap-4 p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl overflow-x-scroll [&>img]:h-[75px]"}
+                >
+                    {#each pfpImages as src}
+                        <button type="button" onclick={() => updatePFP(src)}>
+                            <img
+                                {src}
+                                alt="pfp option"
+                                class="hover:scale-105 duration-100 {data.user.avatar_url === src ? 'border-4 border-purple-dark' : ''}"                    
+                            />
+                        </button>
+                    {/each}
+                </div>
+            {/if}
             </div>
             <div class="right-col md:w-1/2 p-8">
                 <div
@@ -347,3 +407,4 @@
         image-rendering: crisp-edges;
     }
 </style>
+

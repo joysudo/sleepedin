@@ -1,42 +1,19 @@
-# sv
+# SleepedIn
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+> A platform for AI (animal intelligence) B2B (bunny-to-bunny) SaaS (soft and adorable sleepers) 🐇
 
-## Creating a project
+- Create your own bunny dreamland
+- Show off your profile
+- Hop into your friends' dreams
+- Send your friends bunnies with messages
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Behind the Scenes
+| Category | Tool |
+| ----------- | ----------- |
+| Fronted | SvelteKit, TypeScript |
+| Styling | Tailwind CSS |
+| Database/Auth | Supabase |
 
-```sh
-# create a new project
-npx sv create my-app
-```
+Made by **Joy Su** (database/auth), **Kat Wang** (frontend/assets), and **Kaylee Dinh** (design/assets).
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.1 create --template minimal --types ts --install npm sleepedin
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+![preview of explore page](https://cdn.hackclub.com/019dca6f-c661-7a9c-a032-a6cbc1c764cb/sleepedin_landing.png)

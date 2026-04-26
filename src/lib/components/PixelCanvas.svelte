@@ -55,7 +55,7 @@
         {/each}
     </div>
 
-    <div class="w-full self-start flex justify-center items-center md:w-[200%] md:-translate-x-1/4">
+    <div class="w-max self-start flex justify-start items-center max-w-none">
         <button
             class="text-2xl font-tommy-bold text-purple-dark p-3 duration-200 hover:p-4 hover:scale-102 m-4 bg-linear-to-t from-purple-bright to-pink-light rounded-xl outline-2 outline-purple-dark"
             style="box-shadow: 0px 4px 0px #576EAC, 0px 6px 4px #7472A0;"

@@ -62,17 +62,20 @@
     }
 
 
+    // Inside your <script> tag
     async function updateBio() {
         const user = $currentUser;
         if (!user) return;
 
+        // We use data.user.bio because it's bound to the textarea
         const { error } = await supabase
-            .from("profiles") // Ensure this matches your actual table name
+            .from("users") // Changed from "profiles" to "users"
             .update({ bio: data.user.bio })
             .eq("id", user.id);
 
         if (error) {
-            alert("Error saving bio: " + error.message);
+            console.error('Update failed:', error);
+            alert("Failed to save bio.");
         } else {
             alert("Bio updated!");
         }
@@ -208,24 +211,23 @@
                         about
                     </h1>
                     {#if $currentUser && $currentUser.id === data.user.id}
-                        <div class="flex flex-col gap-2">
-                            <label for="bio-update" class="font-tommy-bold text-purple-dark">Update your Bio:</label>
+                        <div class="flex flex-col gap-3">
                             <textarea 
-                                id="bio-update" 
                                 bind:value={data.user.bio} 
                                 placeholder="Tell us about yourself..."
-                                class="p-2 rounded-lg border-2 border-purple-dark font-tommy"
+                                class="w-full p-3 rounded-xl border-2 border-purple-dark font-tommy text-xl resize-none outline-none focus:ring-2 focus:ring-purple-dark/20"
+                                rows="4"
                             ></textarea>
                             <button 
-                                onclick={updateBio} 
-                                class="bg-purple-dark text-white p-2 rounded-xl font-tommy-bold hover:opacity-80 transition-opacity"
+                                onclick={updateBio}
+                                class="w-fit px-6 py-2 bg-purple-dark text-white font-tommy-bold rounded-full hover:scale-105 active:scale-95 transition-transform"
                             >
                                 Save Changes
                             </button>
                         </div>
                     {:else}
                         <p class="font-tommy text-3xl text-purple-dark">
-                            {data.user.bio || "this is the default about/bio paragraph. this user hasn't edited it yet! hmm they must be really nonchalant..."}
+                            {data.user.bio || "this is the default about/bio paragraph. this user hasn't edited it yet! hmm they must be really nonchalant or maybe they just forgot to write it."}
                         </p>
                     {/if}
                 </div>

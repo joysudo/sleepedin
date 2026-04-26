@@ -1,4 +1,5 @@
 <script lang="ts">
+import { goto } from '$app/navigation';
 import { supabase } from '$lib/utils/supabaseClient';
 
 let email = $state('');
@@ -31,6 +32,10 @@ async function register() {
             console.error(insertError);
         }
     }
+    if (username) {
+        goto(`/user/${username}`);
+    }
+
 }
 </script>
 

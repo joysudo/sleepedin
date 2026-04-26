@@ -262,7 +262,8 @@
         align-items: center;
         justify-content: center;
 
-        width: clamp(150px, 25vw, 300px);
+        /* width: clamp(150px, 25vw, 300px); */
+        width: 100%;
         aspect-ratio: 2 / 1;
 
         border-radius: 30% / 45%;

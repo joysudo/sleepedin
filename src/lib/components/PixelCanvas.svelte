@@ -83,7 +83,8 @@
         display: flex;
         gap: 0.1rem;
         place-self: center;
-        margin: 0.5rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
     .color-swatch {
         width: 2rem;

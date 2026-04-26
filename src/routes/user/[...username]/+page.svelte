@@ -61,6 +61,23 @@
         message = "";
     }
 
+
+    async function updateBio() {
+        const user = $currentUser;
+        if (!user) return;
+
+        const { error } = await supabase
+            .from("profiles") // Ensure this matches your actual table name
+            .update({ bio: data.user.bio })
+            .eq("id", user.id);
+
+        if (error) {
+            alert("Error saving bio: " + error.message);
+        } else {
+            alert("Bio updated!");
+        }
+    }
+
     $effect(() => {
         const userId = data.user?.id;
         if (!userId) return;
@@ -190,12 +207,27 @@
                     <h1 class="font-tommy-bold text-4xl text-purple-dark">
                         about
                     </h1>
-                    <p class="font-tommy text-3xl text-purple-dark">
-                        this is the default about/bio paragraph. this user
-                        hasn't edited it yet! hmm they must be really nonchalant
-                        or maybe they just forgot to write it. i guess we'll
-                        never know until they edit this...
-                    </p>
+                    {#if $currentUser && $currentUser.id === data.user.id}
+                        <div class="flex flex-col gap-2">
+                            <label for="bio-update" class="font-tommy-bold text-purple-dark">Update your Bio:</label>
+                            <textarea 
+                                id="bio-update" 
+                                bind:value={data.user.bio} 
+                                placeholder="Tell us about yourself..."
+                                class="p-2 rounded-lg border-2 border-purple-dark font-tommy"
+                            ></textarea>
+                            <button 
+                                onclick={updateBio} 
+                                class="bg-purple-dark text-white p-2 rounded-xl font-tommy-bold hover:opacity-80 transition-opacity"
+                            >
+                                Save Changes
+                            </button>
+                        </div>
+                    {:else}
+                        <p class="font-tommy text-3xl text-purple-dark">
+                            {data.user.bio || "this is the default about/bio paragraph. this user hasn't edited it yet! hmm they must be really nonchalant..."}
+                        </p>
+                    {/if}
                 </div>
                 <div
                     class="flex flex-col mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"

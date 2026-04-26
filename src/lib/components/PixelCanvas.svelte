@@ -24,35 +24,37 @@
 </script>
 <svelte:window onmouseup={() => (isDrawing = false)} />
 
-<div class="palette">
-    {#each colors as color, i}
-        <button
-            class="color-swatch"
-            class:selected={currentColorIndex === i}
-            style:background-color={color}
-            onclick={(() => currentColorIndex = i)}
-            aria-label="select color"
-        ></button>
-    {/each}
-</div>
-
-<div class="canvas">
-    {#each pixelArt as row, rowIndex}
-        {#each row as pixel, colIndex}
+<div  class="flex flex-col">
+    <div class="palette">
+        {#each colors as color, i}
             <button
-                class="pixel"
-                style:background-color={colors[pixel]}
-                onmousedown={() => { isDrawing = true; paint(rowIndex, colIndex); }}
-                onmouseenter={() => isDrawing && paint(rowIndex, colIndex)}
-                aria-label="paint pixel"
+                class="color-swatch"
+                class:selected={currentColorIndex === i}
+                style:background-color={color}
+                onclick={(() => currentColorIndex = i)}
+                aria-label="select color"
             ></button>
         {/each}
-    {/each}
-</div>
+    </div>
 
-<div>
-    <button onclick={() => pixelArt = Array(20).fill(0).map(() => Array(20).fill(0)) }>clear</button>
-    <button onclick={() => { onFinished?.(pixelArt) }}>save</button>
+    <div class="canvas">
+        {#each pixelArt as row, rowIndex}
+            {#each row as pixel, colIndex}
+                <button
+                    class="pixel"
+                    style:background-color={colors[pixel]}
+                    onmousedown={() => { isDrawing = true; paint(rowIndex, colIndex); }}
+                    onmouseenter={() => isDrawing && paint(rowIndex, colIndex)}
+                    aria-label="paint pixel"
+                ></button>
+            {/each}
+        {/each}
+    </div>
+
+    <div>
+        <button onclick={() => pixelArt = Array(20).fill(0).map(() => Array(20).fill(0)) }>clear</button>
+        <button onclick={() => { onFinished?.(pixelArt) }}>save</button>
+    </div>
 </div>
 
 <style>
@@ -79,5 +81,7 @@
     }
     .pixel {
         aspect-ratio: 1;
-    }
+        border: 1px solid black;
+        /* oh pls restyle */
+    } 
 </style>

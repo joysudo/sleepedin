@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+    --color-teal-bright: #B0E8D5;
+    --color-teal-light: #D2EEE7;
+    --color-blue-dull: #83A5D5;
+    --color-blue-bright: #9DC9F7;
+    --color-pink-dark: #E7A6AD;
+    --color-pink-bright: #F2C0C5;
+    --color-pink-light: #FFDFF3;
+    --color-purple-bright: #CA9FDD;
+    --color-purple-light: #D9DAF8;
+    --color-purple-dark: #576EAC;
+
+    --font-tommy: "madetommysoft", sans-serif;
+    --font-tommy-bold: "madetommysoft-bold", sans-serif;
+    --font-tommy-extrabold: "madetommysoft-extrabold", sans-serif;
+}
+
+@font-face {
+    font-family: madetommysoft;
+    src: url('fonts/MADE\ Tommy\ Soft\ Regular\ PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: madetommysoft-bold;
+    src: url('fonts/MADE\ Tommy\ Soft\ Bold\ PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: madetommysoft-extrabold;
+    src: url('fonts/MADE\ Tommy\ Soft\ ExtraBold\ PERSONAL\ USE.otf');
+}
+

@@ -265,7 +265,7 @@
             </div>
             <div class="right-col md:w-1/2 p-8">
                 <div
-                    class="p-4 mb-6 mx-6 flex flex-col md:flex-row w-full gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                    class="p-4 mb-6 mx-6 flex flex-col w-full gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
                 >
                     <h1 class="font-tommy-bold text-4xl text-purple-dark">
                         about
@@ -292,7 +292,7 @@
                     {/if}
                 </div>
                 <div
-                    class="flex flex-col md:flex-row w-full mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                    class="flex flex-col w-full mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
                 >
                     <h1 class="font-tommy-bold text-4xl text-purple-dark">
                         send a bunny!

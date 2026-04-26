@@ -19,16 +19,16 @@
 
 @font-face {
     font-family: madetommysoft;
-    src: url('fonts/MADE\ Tommy\ Soft\ Regular\ PERSONAL\ USE.otf');
+    src: url('/fonts/MADE\ Tommy\ Soft\ Regular\ PERSONAL\ USE.otf');
 }
 
 @font-face {
     font-family: madetommysoft-bold;
-    src: url('fonts/MADE\ Tommy\ Soft\ Bold\ PERSONAL\ USE.otf');
+    src: url('/fonts/MADE\ Tommy\ Soft\ Bold\ PERSONAL\ USE.otf');
 }
 
 @font-face {
     font-family: madetommysoft-extrabold;
-    src: url('fonts/MADE\ Tommy\ Soft\ ExtraBold\ PERSONAL\ USE.otf');
+    src: url('/fonts/MADE\ Tommy\ Soft\ ExtraBold\ PERSONAL\ USE.otf');
 }
 

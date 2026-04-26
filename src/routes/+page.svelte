@@ -3,7 +3,7 @@
     style="background-image: url('bg_landing.png');"
 >
     <!-- logo -->
-    <img src="sleepedinlogo.png" alt="SleepedIn logo" class="hover:scale-102 duration-300" />
+    <img src="./sleepedinlogo.png" alt="SleepedIn logo" class="hover:scale-102 duration-300" />
     <!-- tagline -->
     <h1 class="font-tommy-bold text-5xl hover:scale-102 duration-300 m-6 -mt-3 text-purple-dark">bomboclat tagline</h1>
     <!-- sign up and log in buttons -->

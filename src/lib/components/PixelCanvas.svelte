@@ -55,7 +55,7 @@
         {/each}
     </div>
 
-    <div class="place-self-center">
+    <div class="self-start w-[200%] flex justify-center items-center">
         <button
             class="text-2xl font-tommy-bold text-purple-dark p-3 duration-200 hover:p-4 hover:scale-102 m-4 bg-linear-to-t from-purple-bright to-pink-light rounded-xl outline-2 outline-purple-dark"
             style="box-shadow: 0px 4px 0px #576EAC, 0px 6px 4px #7472A0;"
@@ -69,7 +69,10 @@
             style="box-shadow: 0px 4px 0px #576EAC, 0px 6px 4px #7472A0;"
             onclick={() => {
                 onFinished?.(pixelArt);
-            }}>save</button
+                pixelArt = Array(20)
+                    .fill(0)
+                    .map(() => Array(20).fill(0));
+            }}>send (message + creature)</button
         >
     </div>
 </div>

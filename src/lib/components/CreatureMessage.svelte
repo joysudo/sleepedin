@@ -28,7 +28,6 @@
     <img src="/images/shadow.png" alt="" class="shadow"/>
     <div class="text">
         <p>{message}</p>
-        <p>by {author}</p>
     </div>
     <div class="canvas">
         {#each croppedArt as row, rowIndex}

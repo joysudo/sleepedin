@@ -249,7 +249,8 @@
                 <div
                     class={pfpEdit == false
                         ? "hidden"
-                        : "flex flex-row gap-4 p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl overflow-x-scroll [&>img]:h-[75px]"}
+                        : "flex flex-row gap-4 p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl overflow-x-scroll [&>img]:h-[100px] md:[&>img]:h-[75px]"
+                    }
                 >
                     {#each pfpImages as src}
                         <button type="button" onclick={() => updatePFP(src)}>

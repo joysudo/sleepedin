@@ -10,23 +10,21 @@
     <div class="flex flex-row gap-10">
         <!-- sign up :o -->
         <div
-            class="bg-linear-to-t from-teal-light to-blue-bright p-4 hover:p-5 hover:[&>button]:p-7 active:p-2 active:[&>button]:p-4 duration-200 rounded-xl outline-8 outline-purple-dark"
+            class="bg-linear-to-t from-teal-light to-blue-bright p-4 hover:p-5 hover:[&>div]:p-7 active:p-2 active:[&>div]:p-4 duration-200 rounded-xl outline-8 outline-purple-dark flex items-center"
             style="box-shadow: 0px 12px 0px #576EAC, 0px 15px 8px #7472A0;"
         >
-            <div
+            <a href="/register"
                 class="duration-300 bg-linear-to-t from-blue-bright to-teal-light drop-shadow-md drop-shadow-purple-dark/60 p-6 text-4xl rounded-lg font-tommy-bold text-purple-dark"
-                >sign up!</div
-            >
+                >sign up!</a>
         </div>
         <!-- log in -->
         <div
-            class="bg-linear-to-b from-teal-light to-blue-bright p-4 hover:p-5 hover:[&>button]:p-7 active:p-2 active:[&>button]:p-4 duration-200 rounded-xl outline-8 outline-purple-dark"
+            class="bg-linear-to-b from-teal-light to-blue-bright p-4 hover:p-5 hover:[&>div]:p-7 active:p-2 active:[&>div]:p-4 duration-200 rounded-xl outline-8 outline-purple-dark flex items-center"
             style="box-shadow: 0px 12px 0px #576EAC, 0px 15px 8px #7472A0;"
         >
-            <div
+            <a href="/login"
                 class="duration-300 bg-linear-to-b from-blue-bright to-teal-light drop-shadow-md drop-shadow-purple-dark/60 p-6 text-4xl rounded-lg font-tommy-bold text-purple-dark"
-                >log in :D</div
-            >
+                >log in :D</a>
         </div>
     </div>
 </div>

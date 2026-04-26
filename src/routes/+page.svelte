@@ -2,8 +2,8 @@
     import PixelCanvas from '$lib/components/PixelCanvas.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<h1>Welcome</h1>
+<a href="/login">Login</a>
+<a href="/register">Register</a>
 
-<!-- replace onFinished with actual project syncing to supabase -->
 <PixelCanvas onFinished={(grid) => console.log("grid data:", $state.snapshot(grid))}/>

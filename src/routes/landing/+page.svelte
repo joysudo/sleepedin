@@ -5,9 +5,9 @@
     <!-- logo -->
     <img src="sleepedinlogo.png" alt="SleepedIn logo" class="hover:scale-102 duration-300" />
     <!-- tagline -->
-    <h1 class="font-tommy-bold text-5xl hover:scale-102 duration-300 m-6 -mt-3 text-purple-dark">bomboclat tagline</h1>
+    <h1 class="font-tommy-bold text-center w-[60%] text-5xl hover:scale-102 duration-300 m-6 -mt-3 text-purple-dark">ai (animal intelligence) b2b (bunny 2 bunny) SAAS (soft and adorable sleepers) tool</h1>
     <!-- sign up and log in buttons -->
-    <div class="flex flex-row gap-10">
+    <div class="m-2 flex flex-row gap-10">
         <!-- sign up :o -->
         <div
             class="bg-linear-to-t from-teal-light to-blue-bright p-4 hover:p-5 hover:[&>div]:p-7 active:p-2 active:[&>div]:p-4 duration-200 rounded-xl outline-8 outline-purple-dark flex items-center"

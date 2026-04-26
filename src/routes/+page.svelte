@@ -1,7 +1,9 @@
 <script lang="ts">
+    import Navbar from '$lib/components/Navbar.svelte';
     import PixelCanvas from '$lib/components/PixelCanvas.svelte';
 </script>
 
+<Navbar/>
 <a href="/landing">link to landing (will remove later)</a>
 
 <h1>Welcome to SvelteKit</h1>

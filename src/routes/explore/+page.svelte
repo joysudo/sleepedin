@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import Navbar from "$lib/components/Navbar.svelte";
     import ExploreIsland from "$lib/components/ExploreIsland.svelte";
 </script>

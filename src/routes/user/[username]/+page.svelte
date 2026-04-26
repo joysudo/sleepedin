@@ -21,16 +21,10 @@
         },
     );
 
-    let furnitureEdit = $state(false);
+    let pfpEdit = $state(false);
 
-    const furnitureImages = Object.values(furnitureImageModules);
 
-    let selectedFurniture = $state<string | null>(null);
-
-    let mouseX = $state(0);
-    let mouseY = $state(0);
-
-    let placedFurniture = $state<{ src: string; x: number; y: number }[]>([]);
+    const pfpImages = Object.values(furnitureImageModules);
 
     async function loadCreatures(userId: string) {
         const { data: creatures } = await supabase
@@ -160,21 +154,19 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div
-    class="bg-[url('/bg_blue_sky.png')] bg-cover"
-    onmousemove={(e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }}
->
+<div class="bg-[url('/bg_blue_sky.png')] bg-cover">
     <Navbar />
     <div class="flex flex-row">
         <div class="md:w-1/2 p-8">
-            <h1
-                class="font-tommy-bold text-5xl text-purple-dark wrap-break-word italic"
-            >
-                {$page.params.username}'s dreamland
-            </h1>
+            <div class="flex flex-row gap-2">
+                <!-- where the pfp will go -->
+                <img /> 
+                <h1
+                    class="font-tommy-bold text-5xl text-purple-dark wrap-break-word italic"
+                >
+                    {$page.params.username}'s dreamland
+                </h1>
+            </div>
             <div class="cloud-container">
                 <img
                     src="/images/cloud_platform.png"
@@ -182,27 +174,7 @@
                     alt=""
                 />
                 <!-- svelte-ignore a11y_click_events_have_key_events -->
-                <div
-                    class="grid-overlay"
-                    onclick={(e) => {
-                        if (!selectedFurniture) return;
-
-                        const rect = e.currentTarget.getBoundingClientRect();
-
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-
-                        const col = Math.floor((x / rect.width) * 6) + 1;
-                        const row = Math.floor((y / rect.height) * 4) + 1;
-
-                        placedFurniture = [
-                            ...placedFurniture,
-                            { src: selectedFurniture, x: col, y: row },
-                        ];
-
-                        selectedFurniture = null;
-                    }}
-                >
+                <div class="grid-overlay">
                     {#each Array(24) as _, i}
                         <div class="cell"></div>
                     {/each}
@@ -227,41 +199,27 @@
                             </div>
                         </div>
                     {/each}
-
-                    {#each placedFurniture as item}
-                        <div
-                            class="cell"
-                            style:grid-column={item.x}
-                            style:grid-row={item.y}
-                        >
-                            <!-- svelte-ignore a11y_missing_attribute -->
-                            <img src={item.src} class="w-full object-contain" />
-                        </div>
-                    {/each}
                 </div>
             </div>
             <!-- furniture -->
             <!-- click to open thing -->
             <button
                 class="flex justify-items-center text-enter p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl text-wrap font-tommy-bold text-3xl text-purple-dark w-fit hover:scale-105 active:scale-95 duration-200"
-                onclick={() => (furnitureEdit = !furnitureEdit)}
+                onclick={() => (pfpEdit = !pfpEdit)}
             >
-                {furnitureEdit == true ? "ok!" : "re-decorate!"}
+                {pfpEdit == true ? "ok!" : "change pfp!"}
             </button>
             <!-- actual thing -->
             <div
-                class={furnitureEdit == false
+                class={pfpEdit == false
                     ? "hidden"
                     : "flex flex-row gap-4 p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl overflow-x-scroll [&>img]:h-[75px]"}
             >
-                {#each furnitureImages as src}
-                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+                {#each pfpImages as src}
                     <img
                         {src}
-                        alt="furniture that can be placed on cloud"
-                        class="cursor-pointer hover:scale-110 transition"
-                        onclick={() => (selectedFurniture = src)}
+                        alt="pfp option"
+                        class="hover:scale-105 duration-100"
                     />
                 {/each}
             </div>
@@ -300,14 +258,6 @@
             </div>
         </div>
     </div>
-    {#if selectedFurniture}
-        <img
-            src={selectedFurniture}
-            alt="preview"
-            class="pointer-events-none fixed opacity-50 w-20 z-100"
-            style="left: {mouseX}px; top: {mouseY}px; transform: translate(-50%, -50%);"
-        />
-    {/if}
 </div>
 
 <style>

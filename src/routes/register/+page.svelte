@@ -33,7 +33,7 @@ async function register() {
         }
     }
     if (username) {
-        goto(`/user/${username}`);
+        goto(`/login`);
     }
 
 }

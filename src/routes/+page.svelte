@@ -5,7 +5,8 @@
     <!-- logo -->
     <img src="./sleepedinlogo.png" alt="SleepedIn logo" class="hover:scale-102 duration-300" />
     <!-- tagline -->
-    <h1 class="font-tommy-bold text-5xl hover:scale-102 duration-300 m-6 -mt-3 text-purple-dark">bomboclat tagline</h1>
+    <h1 class="font-tommy-bold text-5xl hover:scale-102 duration-300 m-6 -mt-3 text-purple-dark"><b>A</b>nimal <b>I</b>ntercommunication <b>B</b>unny <b>2</b> <b>B</b>unny <b>S</b>oft <b>A</b>nd <b>A</b>dorable <b>S</b>leepers</h1>
+    <p>You'd only say some words in your dreams. SleepedIn lets you speak them out loud.</p>
     <!-- sign up and log in buttons -->
     <div class="flex flex-row gap-10">
         <!-- sign up :o -->

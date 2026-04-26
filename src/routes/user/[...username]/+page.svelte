@@ -188,7 +188,7 @@
 
 <div class="bg-[url('/bg_blue_sky.png')] bg-cover">
     <Navbar />
-    <div class="flex flex-row">
+    <div class="flex flex-row media-query">
         <div class="md:w-1/2 p-8">
             <div class="flex items-center gap-4">
                 {#if data.user?.avatar_url}
@@ -265,13 +265,13 @@
             </div>
             <div class="right-col md:w-1/2 p-8">
                 <div
-                    class="p-4 mb-6 mx-6 flex flex-col gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                    class="p-4 mb-6 mx-6 flex flex-col md:flex-row w-full gap-2 bg-linear-to-b from-pink-light to-purple-light outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
                 >
                     <h1 class="font-tommy-bold text-4xl text-purple-dark">
                         about
                     </h1>
                     {#if $currentUser && $currentUser.id === data.user.id}
-                        <div class="flex flex-col gap-3">
+                        <div class="flex flex-col md:flex-row w-full gap-3">
                             <textarea 
                                 bind:value={data.user.bio} 
                                 placeholder="Tell us about yourself..."
@@ -292,12 +292,12 @@
                     {/if}
                 </div>
                 <div
-                    class="flex flex-col mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
+                    class="flex flex-col md:flex-row w-full mb-6 mx-6 p-4 gap-2 bg-linear-to-b from-teal-light to-blue-bright outline-4 outline-purple-dark dark-purple-box-shadow rounded-2xl"
                 >
                     <h1 class="font-tommy-bold text-4xl text-purple-dark">
                         send a bunny!
                     </h1>
-                    <div class="gap-24 items-start flex flex-row">
+                    <div class="gap-24 items-start flex flex-row media-query">
                         <div class="w-[45%] place-self-center">
                             <PixelCanvas onFinished={handleSave} />
                         </div>
@@ -396,8 +396,8 @@
         height: 100%;
     }
 
-    .cell img {
-        /* position: absolute; */
+    /* .cell img {
+        position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -405,6 +405,12 @@
         image-rendering: pixelated;
         image-rendering: -moz-crisp-edges;
         image-rendering: crisp-edges;
+    } */
+
+    @media (max-width: 768px) {
+        .media-query {
+            flex-direction: column !important;
+        }
     }
 </style>
 

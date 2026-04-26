@@ -91,10 +91,7 @@
             >
                 <h1 class="font-tommy-bold text-4xl text-purple-dark">about</h1>
                 <p class="font-tommy text-3xl text-purple-dark">
-                    yap yap yap yap.. yap yap yap... joysudo cattatime hurray! i
-                    llike bunnies and rabbits and sleeping in zzzzz i like
-                    svelte and i dont like tailwind css it makes the html look
-                    ugly
+                    this is the default about/bio paragraph. this user hasn't edited it yet! hmm they must be really nonchalant or maybe they just forgot to write it. i guess we'll never know until they edit this...
                 </p>
             </div>
             <div

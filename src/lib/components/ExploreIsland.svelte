@@ -12,7 +12,7 @@
         <img
             src={imgUrl}
             alt="someone's dreamland island"
-            class="w-[80%] m-4 hover:scale-107 active:scale-90 active:m-2 hover:m-6 duration-600"
+            class="w-[80%] m-4 hover:scale-107 animate-[float_2s_ease-in-out_infinite_alternate] hover:animate-[bigfloat_1s_ease-in-out_infinite_alternate] active:scale-90 active:m-2 hover:m-6 duration-600"
         />
         <h2
             class="font-tommy-bold text-3xl hover:scale-105 duration-200 text-purple-dark"

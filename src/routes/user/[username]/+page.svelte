@@ -58,10 +58,17 @@
 <Navbar />
 <div class="flex flex-row">
     <div class="md:w-1/2 p-8">
-        <h1 class="font-tommy-bold text-5xl text-purple-dark">
+        <h1 class="font-tommy-bold text-5xl text-purple-dark break-words italic">
             {$page.params.username}'s dreamland
         </h1>
-        {#each $pixelCreatures as creature}
+        <div class="cloud-container">
+            <img src="/images/cloud_platform_grid-1.png.png" class="base-image" alt="">
+            <div class="grid-overlay">
+                <div class="cell"><img src="https://placehold.co/24x24/png" alt=""></div>
+                <!-- give cell class to everything in here -->
+            </div>
+        </div>
+            {#each $pixelCreatures as creature}
             <CreatureMessage
                 pixelArt={creature.pixel_art}
                 message={creature.message}
@@ -90,6 +97,7 @@
                     <textarea
                         bind:value={message}
                         placeholder="Leave a message..."
+                        class="font-tommy"
                     ></textarea>
                 </div>
             </div>
@@ -107,10 +115,9 @@
         width: clamp(150px, 25vw, 300px);
         aspect-ratio: 2 / 1;
 
-        padding: 1rem;
         border-radius: 30% / 45%;
         background-color: white;
-        border: 3px solid black;
+        border: 3px solid var(--color-blue-dull);
     }
     .text-bubble::after {
         content: "";
@@ -118,11 +125,71 @@
         right: 65%;
         top: 100%;
         width: 10%;
-        height: 20%;
+        aspect-ratio: 1;
         background-color: white;
         border-radius: 0 0 50% 50% / 0 0 100% 100%;
-        border-left: 3px solid black;
-        border-right: 3px solid black;
-        border-bottom: 3px solid black;
+        border-left: 3px solid var(--color-blue-dull);
+        border-right: 3px solid var(--color-blue-dull);
+        border-bottom: 3px solid var(--color-blue-dull);
+    }
+
+    .text-bubble textarea {
+        width: 80%;
+        height: 70%;
+        resize: none;
+        outline: none;
+        color: var(--color-purple-dark);
+    }
+
+    .cloud-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-top: 10%;
+    }
+
+    .cloud-container img {
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+    }
+
+    .base-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .grid-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        width: 80%;
+        height: calc(100% * 4 / 7);
+    
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .cell {
+        position: relative;
+        display: flex;
+        align-items: flex-end; 
+        justify-content: center;
+        overflow: visible; 
+    }
+
+    .cell img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
     }
 </style>

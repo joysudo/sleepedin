@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+    background-color: white;
+}
+
 @theme {
     --color-teal-bright: #B0E8D5;
     --color-teal-light: #D2EEE7;

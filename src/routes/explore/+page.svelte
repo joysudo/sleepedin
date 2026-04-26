@@ -3,7 +3,7 @@
     import ExploreIsland from "$lib/components/ExploreIsland.svelte";
 </script>
 
-<div class="bg-[url('/bg_landing.png')] bg-cover w-screen h-screen">
+<div class="bg-[url('/bg_blue_and_teal.png')] bg-cover w-screen h-screen">
     <Navbar />
     <div class="p-4 pl-8">
         <h1
@@ -15,8 +15,9 @@
         <div class="flex flex-row flex-wrap gap-4 justify-center">
             <!-- run some script to add these later -->
             <ExploreIsland />
-            <ExploreIsland />
+            <ExploreIsland username="bomboclat125" />
             <ExploreIsland /> <ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland /><ExploreIsland />
+            <!-- delete these placeholders ^ i just added thgem to see how it looks like -->
         </div>
     </div>
 </div>

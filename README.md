@@ -10,7 +10,7 @@
 ## Behind the Scenes
 | Category | Tool |
 | ----------- | ----------- |
-| Fronted | SvelteKit, TypeScript |
+| Frontend | SvelteKit, TypeScript |
 | Styling | Tailwind CSS |
 | Database/Auth | Supabase |
 

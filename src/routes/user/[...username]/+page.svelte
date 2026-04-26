@@ -147,7 +147,7 @@
             <h1
                 class="font-tommy-bold text-5xl text-purple-dark break-words italic"
             >
-                {$currentUserData.username}'s dreamland
+                {$page.params.username}'s dreamland
             </h1>
             <div class="cloud-container">
                 <img

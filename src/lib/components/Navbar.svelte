@@ -24,12 +24,12 @@
             link={`/user/${$currentUserData.username}`}
         />
 
-        <!-- <NavbarIcon
+        <NavbarIcon
             iconUrl="/icons/logout.png"
             iconAlt="logout icon"
             text="log out"
-            link="/" // fix this later add onclick popup "r u sure u wanna log out blablabla"
-        /> -->
+            link="/" 
+        />
     </div>
 </div>
 

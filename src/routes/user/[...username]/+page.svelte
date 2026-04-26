@@ -243,7 +243,7 @@
                     class="flex justify-items-center text-enter p-4 m-2 outline-4 outline-purple-dark bg-linear-to-b from-purple-light to-blue-50 dark-purple-box-shadow rounded-2xl text-wrap font-tommy-bold text-3xl text-purple-dark w-fit hover:scale-105 active:scale-95 duration-200"
                     onclick={() => (pfpEdit = !pfpEdit)}
                 >
-                    {pfpEdit == true ? "ok!" : "first time? change pfp!"}
+                    {pfpEdit == true ? "select & refresh to save" : "first time? change pfp!"}
                 </button>
                 <!-- actual thing -->
                 <div

@@ -12,13 +12,18 @@
 
         // Slice from start to the last row with content (+1 to include that row)
         return lastContentRowIndex === -1 ? [] : pixelArt.slice(0, lastContentRowIndex + 1);
-    });</script>
+    });
+    const randomDelay = (Math.random() * -5).toFixed(2) + 's';
+    const randomDuration = (1 + Math.random() * 2).toFixed(2) + 's';
+</script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="creature"
     class:active={isActive} 
     onclick={() => isActive = !isActive}
+    style:--sway-delay={randomDelay}
+    style:--sway-duration={randomDuration}
 >
     <img src="/images/shadow.png" alt="" class="shadow"/>
     <div class="text">
@@ -44,6 +49,17 @@
         grid-template-columns: repeat(20, 1fr);   
         width: 100%;
         height: auto;
+        transform-origin: bottom center;
+        animation: sway var(--sway-duration, 4s) ease-in-out var(--sway-delay, 0s) infinite alternate;
+    }
+
+    @keyframes sway {
+        0% {
+                transform: rotate(-2deg);
+            }
+        100% {
+            transform: rotate(2deg);
+        }
     }
 
     .pixel {
